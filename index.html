@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  
+
+    
+
+    
+
+
+  <title>Youtube API Playlist Listing</title>
+
+   
+  
+  
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css'>
+  
+<style>
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+:root {
+  --font: "Roboto", helvetica, sans-serif;
+  --text-size: 18px;
+  --text-color: #0f0f0f;
+  --text-invert: #f1f1f1;
+  --channelText: #606060;
+  --background: #ffffff;
+  --placeholderBg: rgba(0, 0, 0, 0.1);
+  --placeholderGradient: rgba(255, 255, 255, 0.3);
+}
+
+*,
+*:before,
+*:after {
+  position: relative;
+  box-sizing: border-box;
+}
+
+* {
+  font-size: var(--text-size);
+  font-family: var(--font);
+}
+
+body {
+  color: var(--text-color);
+  overflow-x: hidden;
+  background: var(--background);
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  transition: all 100ms ease;
+}
+
+.video {
+  text-decoration: none;
+}
+@media (max-width: 495px) {
+  .video--wrapper {
+    width: 320px;
+    max-width: 100%;
+  }
+}
+@media (max-width: 320px) {
+  .video--wrapper {
+    width: 100%;
+  }
+}
+.video:hover {
+  text-decoration: none;
+}
+.video--container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px 14px;
+}
+@media (max-width: 1200px) {
+  .video--container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 992px) {
+  .video--container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 495px) {
+  .video--container {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin: 0;
+  }
+}
+@media (max-width: 480px) {
+  .video--container {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+.video--thumbnail {
+  display: block;
+  aspect-ratio: 16/9;
+}
+.video--thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  background-color: var(--placeholderBg);
+}
+.video--thumbnail__overlays {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: inline-flex;
+  flex-direction: row;
+  height: 12px;
+  margin: 4px;
+  padding: 3px 4px;
+  background-color: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  border-radius: 4px;
+  box-sizing: content-box;
+}
+.video--thumbnail__overlays span {
+  max-height: 1.2rem;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: 0.35px;
+  color: white;
+}
+.video--details {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+.video--details__avatar {
+  height: 36px;
+  margin-top: 12px;
+  margin-right: 12px;
+  display: inline-block;
+}
+.video--details__avatar img {
+  background-color: var(--placeholderBg);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  display: inline-block;
+}
+.video--details__meta {
+  overflow-x: hidden;
+  padding-right: 24px;
+}
+.video--details__meta-data {
+  max-height: 36px;
+  overflow: hidden;
+  display: block;
+  -webkit-line-clamp: 2;
+  display: box;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: flex;
+  color: var(--text-color);
+}
+.video--details__meta-data-views, .video--details__meta-data-published {
+  display: inline-block;
+  color: var(--channelText);
+  font-family: var(--font);
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+}
+.video--details__meta-data-published::before {
+  content: "•";
+  margin: 0 4px;
+}
+.video--details__title {
+  margin: 12px 0 4px;
+  color: var(--text-color);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  max-height: 44px;
+  overflow: hidden;
+  display: block;
+  -webkit-line-clamp: 2;
+  display: box;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+.video--details__channelTitle {
+  color: var(--channelText);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0;
+}
+@media (max-width: 495px) {
+  .video--placeholder {
+    width: 320px;
+  }
+}
+@media (max-width: 480px) {
+  .video--placeholder {
+    width: 100%;
+  }
+}
+@keyframes loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
+.video--placeholder .video--thumbnail {
+  border-radius: 12px;
+}
+.video--placeholder .video--thumbnail img {
+  aspect-ratio: 16/9;
+  background-color: var(--placeholderBg);
+}
+.video--placeholder .video--thumbnail__overlays {
+  display: none;
+}
+.video--placeholder .video--details__title, .video--placeholder .video--details__channelTitle {
+  background: var(--placeholderBg);
+  height: 16px;
+  border-radius: 2px;
+}
+.video--placeholder .video--details__title {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.video--placeholder .video--details__channelTitle {
+  width: 66.66666%;
+}
+.video--placeholder .video--details__meta-data {
+  display: none;
+}
+.video--wrapper.loading .loader, .video--wrapper.loading .video--details__title, .video--wrapper.loading .video--details__channelTitle, .video--wrapper.loading .video--thumbnail {
+  overflow: hidden;
+}
+.video--wrapper.loading .loader::after, .video--wrapper.loading .video--details__title::after, .video--wrapper.loading .video--details__channelTitle::after, .video--wrapper.loading .video--thumbnail::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: loading 1.5s infinite;
+}
+.darkmode {
+  --text-color: #f1f1f1;
+  --text-invert: #0f0f0f;
+  --channelText: #aaa;
+  --background: #0f0f0f;
+  --placeholderBg: #232323;
+  --placeholderGradient: rgba(255, 255, 255, 0.05);
+}
+
+.checkbox-wrapper .tgl {
+  display: none;
+}
+.checkbox-wrapper .tgl + .tgl-btn {
+  background: #333333;
+  border-radius: 2em;
+  padding: 6px;
+  transition: all 0.3s ease;
+  outline: 0;
+  display: block;
+  width: 4em;
+  height: 2em;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.checkbox-wrapper .tgl + .tgl-btn::before, .checkbox-wrapper .tgl + .tgl-btn::after {
+  position: relative;
+  display: block;
+  content: "";
+  height: 100%;
+}
+.checkbox-wrapper .tgl + .tgl-btn::before {
+  display: none;
+  width: 50%;
+}
+.checkbox-wrapper .tgl + .tgl-btn::after {
+  left: 0;
+  border-radius: 50%;
+  background: #fff;
+  width: unset;
+  aspect-ratio: 1/1;
+  transition: all 0.2s ease;
+}
+.checkbox-wrapper .tgl:checked + .tgl-btn {
+  background: #f0f0f0;
+}
+.checkbox-wrapper .tgl:checked + .tgl-btn:after {
+  transform: translateX(150%);
+  background: #333333;
+}
+.checkbox-wrapper .tgl:hover + .tgl-btn {
+  box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.75), 0px 0px 30px 0 rgba(255, 255, 255, 0.5), 0px 0px 60px 0 rgba(255, 255, 255, 0.25);
+}
+.checkbox-wrapper .icon {
+  width: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-invert);
+}
+.checkbox-wrapper .icon_sun {
+  left: 10%;
+}
+.checkbox-wrapper .icon_moon {
+  right: 10%;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <!-- Darkmode Toggle -->
+<section class="container pt-5">
+	<div class="checkbox-wrapper">
+		<input class="tgl" id="darkmode" type="checkbox" />
+		<label class="tgl-btn" for="darkmode">
+			<svg class="icon icon_sun" width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<circle cx="11.9998" cy="11.9998" r="5.75375" fill="currentColor" />
+				<g>
+					<circle cx="3.08982" cy="6.85502" r="1.71143" transform="rotate(-60 3.08982 6.85502)" fill="currentColor" />
+					<circle cx="3.0903" cy="17.1436" r="1.71143" transform="rotate(-120 3.0903 17.1436)" fill="currentColor" />
+					<circle cx="12" cy="22.2881" r="1.71143" fill="currentColor" />
+					<circle cx="20.9101" cy="17.1436" r="1.71143" transform="rotate(-60 20.9101 17.1436)" fill="currentColor" />
+					<circle cx="20.9101" cy="6.8555" r="1.71143" transform="rotate(-120 20.9101 6.8555)" fill="currentColor" />
+					<circle cx="12" cy="1.71143" r="1.71143" fill="currentColor" />
+				</g>
+				</circle>
+			</svg>
+			<svg class="icon icon_moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 50 50">
+				<path d="M 43.81 29.354 C 43.688 28.958 43.413 28.626 43.046 28.432 C 42.679 28.238 42.251 28.198 41.854 28.321 C 36.161 29.886 30.067 28.272 25.894 24.096 C 21.722 19.92 20.113 13.824 21.683 8.133 C 21.848 7.582 21.697 6.985 21.29 6.578 C 20.884 6.172 20.287 6.022 19.736 6.187 C 10.659 8.728 4.691 17.389 5.55 26.776 C 6.408 36.163 13.847 43.598 23.235 44.451 C 32.622 45.304 41.28 39.332 43.816 30.253 C 43.902 29.96 43.9 29.647 43.81 29.354 Z" fill="currentColor" />
+			</svg>
+		</label>
+	</div>
+</section>
+
+<!-- Meat & Potatoes -->
+<section class="container z-index-1 py-5">
+	<div class="row video--container">
+		<div id="template__0" class="video--placeholder video--wrapper">
+			<!-- This is our repeated component that we'll clone  -->
+			<a class="video" href="#">
+				<div class="video--thumbnail">
+					<img 
+						 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+						 srcset=""
+						 sizes="(max-width: 992px) 480px, 320px"
+					 >
+					<div class="video--thumbnail__overlays">
+						<span></span>
+					</div>
+				</div>
+				<div class="video--details">
+					<div class="video--details__avatar">
+						<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+					</div>
+					<div class="video--details__meta">
+						<h3 class="video--details__title"></h3>
+						<h4 class="video--details__channelTitle"></h4>
+						<div class="video--details__meta-data">
+							<div class="video--details__meta-data-views"></div>
+							<time class="video--details__meta-data-published"></time>
+						</div>
+					</div>
+				</div>
+			</a>
+			<!-- end clone -->
+		</div>
+	</div>
+  </section>
+  <!-- ha, made you look  -->
+  
+      <script id="rendered-js" type="module">
+// =====================
+// Darkmode
+// -- this has nothing to do with the video bit, it's just neat
+// =====================
+const body = document.querySelector("body"),
+drkTgl = document.querySelector("#darkmode"),
+drkMd = {
+  on() {
+    drkTgl.checked = true;
+    body.classList.add("darkmode");
+  },
+  off() {
+    drkTgl.checked = false;
+    body.classList.remove("darkmode");
+  } };
+
+// Check system preference
+if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  drkMd.on();
+} else {
+  drkMd.off();
+}
+
+// Watch for system preference change
+window.
+matchMedia("(prefers-color-scheme: dark)").
+addEventListener("change", event => {
+  const colorPref = event.matches ? drkMd.on() : drkMd.off();
+  return colorPref;
+});
+// Darkmode Toggle btn
+drkTgl.addEventListener("change", function () {
+  const colorPref = drkTgl.checked ? drkMd.on() : drkMd.off();
+  return colorPref;
+});
+
+// ====================
+//  Youtube API Video Grabber
+// ====================
+
+// import tool to convert video durations
+import ytDurationFormat from "https://cdn.skypack.dev/youtube-duration-format@0.2.0";
+// Import fancybox for video modals
+import * as FancyappsUi from "https://cdn.skypack.dev/@fancyapps/ui@4.0.31";
+
+// Format view counts
+function formatNumber(input) {
+  const ranges = [
+  {
+    divider: 1e3,
+    suffix: "K" },
+
+  {
+    divider: 1e6,
+    suffix: "M" },
+
+  {
+    divider: 1e9,
+    suffix: "B" }];
+
+
+  for (let i = ranges.length - 1; i >= 0; i--) {if (window.CP.shouldStopExecution(0)) break;
+    if (input > ranges[i].divider) {
+      let quotient = input / ranges[i].divider;
+      if (quotient < 10) {
+        quotient = Math.floor(quotient * 10) / 10;
+      } else {
+        quotient = Math.floor(quotient);
+      }
+      return quotient.toString() + ranges[i].suffix;
+    }
+  }window.CP.exitedLoop(0);
+  return input.toString();
+}
+// Format published date
+function formatDate(date) {
+  let published = new Date(date),
+  timeSincePublished = parseInt((today - published) / (1000 * 60 * 60 * 24), 10);
+  if (timeSincePublished < 30) {// avg # of days in a month is ~30.4, so I guess we round down
+    // Days
+    timeSincePublished = timeSincePublished + " days ago";
+  } else if (timeSincePublished < 365) {// i aint got no time for leap years
+    // Months
+    let conversion = timeSincePublished / 30;
+    conversion = Math.floor(conversion);
+    const s = conversion < 2 ? "" : "s";
+    timeSincePublished = conversion + " month" + s + " ago";
+  } else {
+    // Years
+    let conversion = timeSincePublished / 30 / 12;
+    conversion = Math.floor(conversion);
+    const s = conversion < 2 ? "" : "s";
+    timeSincePublished = conversion + " year" + s + " ago";
+  }
+  return timeSincePublished;
+}
+// convert youtube video duration time into readable time
+function formatViews(views) {
+  let duration = views;
+  duration = ytDurationFormat(duration);
+  // drop leading zeros
+  if (duration.charAt(0) === "0") {
+    duration = duration.substring(1);
+  }
+  return duration;
+}
+
+/* define some variables for the API
+	- Playlist ID for the playlist - this works via the playlist API to grab a select group of videos
+	- API Token - this has a limit on the free api, I suggest caching the API response and serving the cache instead
+	- API Endpoint - using playlistItems, grabs the snippet & contentDetails, and has a max output of 50. Any higher and you have to query the API again for more vids
+	- Account Avatar
+		- fetched from the channels endpoint; declaring it outside the fetch so we can use it
+*/
+let channelId = "UCjd32KVfRCli1d9iqo4YZ5A",
+playlistId = "PLcuEpRrKy7nMbQ_zLwaIeHeukDQ_YFsgA",
+token = "AIzaSyDhYSYpsXM9mRvXS0KanX2emo87D17q1gw",
+playlistUrl = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=50&playlistId=${playlistId}&key=${token}`,
+channelUrl = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&pageToken=UCjd32KVfRCli1d9iqo4YZ5A&key=${token}`,
+container = document.querySelector(".video--container"),
+placeholder = document.querySelector(".video--placeholder"),
+today = new Date(),
+avatar;
+// Grab channel avatar
+const getAvatar = fetch(channelUrl).
+then(response => response.json()).
+then(data => {
+  avatar = data.items[0].snippet.thumbnails.default.url;
+}).
+catch(function (error) {
+  console.log(error);
+});
+// Make the videos!
+const result = fetch(playlistUrl).
+then(response => response.json()).
+then(data => {
+  let videos = data.items;
+  // Create placeholders
+  for (let i = 1; i < videos.length; i++) {if (window.CP.shouldStopExecution(1)) break;
+    var clone = placeholder.cloneNode(true);
+    clone.id = "template__" + i;
+    container.appendChild(clone);
+  }
+  // Add loading state to each placeholder. If I did this in the previous step, the animations weren't in sync
+  window.CP.exitedLoop(1);const placeholders = document.querySelectorAll('.video--placeholder');
+  placeholders.forEach(ph => {
+    ph.classList.add('loading');
+  });
+  // populate each video
+  videos.map((video, index) => {
+    // Check for private videos; will throw an error and you'll have an empty placeholder.
+    if (videos[index].snippet.title !== 'Private video') {
+      // Grab a placeholder
+      const div = document.getElementById("template__" + index);
+      // Grab video specific data
+      fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${video.contentDetails.videoId}&key=${token}`).
+      then(response => response.json()).
+      then(data => {
+        // assign data to their perspective elements
+        // This is ugly as hell. There's prob a better way to do it, but I'll cross that bridge later
+        let vid = div.querySelector(".video"),
+        vidThumbnail = vid.querySelector(".video--thumbnail img"),
+        vidDuration = vid.querySelector(".video--thumbnail__overlays span"),
+        vidAvatar = vid.querySelector(".video--details__avatar img"),
+        vidTitle = vid.querySelector(".video--details__title"),
+        vidChannel = vid.querySelector(".video--details__channelTitle"),
+        vidViews = vid.querySelector(".video--details__meta-data-views"),
+        vidDate = vid.querySelector(".video--details__meta-data-published");
+
+        vid.setAttribute('data-fancybox', '');
+        vid.setAttribute('data-src', 'https://youtu.be/' + video.contentDetails.videoId);
+        vid.setAttribute('href', 'javascript:;');
+        vid.classList.add('video');
+        vidThumbnail.src = video.snippet.thumbnails.medium.url;
+        vidThumbnail.setAttribute('srcset', video.snippet.thumbnails.high.url + ' 480w, ' + video.snippet.thumbnails.medium.url + ' 320w');
+        vidThumbnail.setAttribute('sizes', '(max-width: 992px) ' + video.snippet.thumbnails.high.url.width + 'px, ' + video.snippet.thumbnails.medium.url.width + 'px');
+        vidDuration.textContent = formatViews(data.items[0].contentDetails.duration);
+        vidAvatar.src = avatar;
+        vidTitle.textContent = video.snippet.title;
+        vidChannel.textContent = video.snippet.channelTitle;
+        vidViews.textContent = formatNumber(data.items[0].statistics.viewCount) + ' views';
+        vidDate.textContent = formatDate(video.contentDetails.videoPublishedAt);
+        // remove placeholder styling
+        div.classList.remove('video--placeholder', 'loading');
+      }).
+      catch(function (error) {
+        console.log(error);
+      });
+    } else {
+      // remove placeholder for private video
+      const div = document.getElementById("template__" + index);
+      div.remove();
+    }
+  });
+}).
+catch(function (error) {
+  console.log(error);
+});
+//# sourceURL=pen.js
+    </script>
+
+  
+</body>
+
+</html>
