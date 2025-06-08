@@ -756,13 +756,13 @@
                         finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent(processedUrl);
                         break;
                     case 'chat':
-                        finalUrl = 'https://anym3u8player.com/m3u8-player-chat/generate3.php?m3u8Url=' + encodeURIComponent(processedUrl);
+                        finalUrl = 'https://vsalema.github.io/play3/?' + encodeURIComponent(processedUrl);
                         break;
                     case 'videojs':
-                        finalUrl = "https://anym3u8player.com/tv/video-player.php?url=" + encodeURIComponent(processedUrl);
+                        finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent(processedUrl);
                         break;
                     default:
-                        finalUrl = "https://anym3u8player.com/?url=" + encodeURIComponent(processedUrl);
+                        finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent(processedUrl);
                 }
                 
                 return finalUrl;
@@ -773,7 +773,7 @@
                 const m3u8Url = urlInput.value.trim();
                 
                 if (validateUrl(m3u8Url)) {
-                    const shareUrl = "https://anym3u8player.com/?url=" + encodeURIComponent(m3u8Url);
+                    const shareUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent(m3u8Url);
                     
                     // Create a temporary input element
                     const dummy = document.createElement('input');
