@@ -743,13 +743,13 @@
                 
                 if (url.startsWith('http://') && needsCorsProxy(?)) {
                     // Special address for IP or domain with port
-                    processedUrl = specialAddress + ;
+                    processedUrl = specialAddress + url;
                 } else if (url.startsWith('http://')) {
                     // Random worker for other HTTP URLs
-                    processedUrl = getRandomAddress() + ;
+                    processedUrl = getRandomAddress() + url;
                 }
                 
-                let finalUrl = '';
+                let finalUrl = '?';
                 
                 switch (type) {
                     case 'fullscreen':
