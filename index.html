@@ -1,615 +1,893 @@
+
 <!DOCTYPE html>
-<html lang="en" >
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  
-
+    <title>love2live.wideiptv.top</title>
+    <link rel="shortcut icon" href="/favicon_play.ico" type="image/x-icon" />
+    <meta name="description" content="Free Online M3U8 and HLS Player. Test your M3U8, HLS, HTTP live, MPD & MP4 videos.Test your HLS (M3U8) streams now with our modern, user-friendly player!" />
+    <meta name="keywords" content="M3U8 Player, HLS player, live streaming, MPEG-DASH, video player, IPTV player, mpd player, html5 player, live TV, TV online, internet TV, M3U8 online player, IPTV Checker" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="canonical" href="https://anym3u8player.com/?url=https%3A%2F%2Flove2live.wideiptv.top%2FELEVEN1%2Ftracks-v1%2Findex.fmp4.m3u8" />
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://anym3u8player.com/?url=https%3A%2F%2Flove2live.wideiptv.top%2FELEVEN1%2Ftracks-v1%2Findex.fmp4.m3u8" />
+    <meta property="og:image" content="https://anym3u8player.com/live.gif" />
+    <meta property="og:image:secure_url" content="https://anym3u8player.com/live.gif" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="love2live.wideiptv.top " />
+    <meta property="og:description" content="Free Online M3U8 and HLS Player. Test your M3U8, HLS, HTTP live, MPD & MP4 videos.Test your HLS (M3U8) streams now with our modern, user-friendly player!" />
+    <meta property="og:site_name" content="AnyM3U8Player" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@anym3u8player" />
+    <meta name="twitter:title" content="love2live.wideiptv.top" />
+    <meta name="twitter:description" content="Free Online M3U8 and HLS Player. Test your M3U8, HLS, HTTP live, MPD & MP4 videos.Test your HLS (M3U8) streams now with our modern, user-friendly player!." />
+    <meta name="twitter:image" content="https://anym3u8player.com/live.gif" />
+    
     
 
-    
+<script src="https://vsalema.github.io/play3/js/open52.js"></script>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
 
-  <title>Youtube API Playlist Listing</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.0/css/nice-select.css">
+
+<link rel="stylesheet" href="https://www.goiptv.top/site_assets/css/font-awesome.min.css">
 
    
-  
-  
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css'>
-  
-<style>
-@charset "UTF-8";
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
-:root {
-  --font: "Roboto", helvetica, sans-serif;
-  --text-size: 18px;
-  --text-color: #0f0f0f;
-  --text-invert: #f1f1f1;
-  --channelText: #606060;
-  --background: #ffffff;
-  --placeholderBg: rgba(0, 0, 0, 0.1);
-  --placeholderGradient: rgba(255, 255, 255, 0.3);
-}
-
-*,
-*:before,
-*:after {
-  position: relative;
-  box-sizing: border-box;
-}
-
-* {
-  font-size: var(--text-size);
-  font-family: var(--font);
-}
-
-body {
-  color: var(--text-color);
-  overflow-x: hidden;
-  background: var(--background);
-}
-
-img {
-  max-width: 100%;
-}
-
-.container {
-  transition: all 100ms ease;
-}
-
-.video {
-  text-decoration: none;
-}
-@media (max-width: 495px) {
-  .video--wrapper {
-    width: 320px;
-    max-width: 100%;
-  }
-}
-@media (max-width: 320px) {
-  .video--wrapper {
-    width: 100%;
-  }
-}
-.video:hover {
-  text-decoration: none;
-}
-.video--container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 30px 14px;
-}
-@media (max-width: 1200px) {
-  .video--container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width: 992px) {
-  .video--container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 495px) {
-  .video--container {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    margin: 0;
-  }
-}
-@media (max-width: 480px) {
-  .video--container {
-    margin-left: -15px;
-    margin-right: -15px;
-  }
-}
-.video--thumbnail {
-  display: block;
-  aspect-ratio: 16/9;
-}
-.video--thumbnail img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  background-color: var(--placeholderBg);
-}
-.video--thumbnail__overlays {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  display: inline-flex;
-  flex-direction: row;
-  height: 12px;
-  margin: 4px;
-  padding: 3px 4px;
-  background-color: rgba(0, 0, 0, 0.8);
-  align-items: center;
-  border-radius: 4px;
-  box-sizing: content-box;
-}
-.video--thumbnail__overlays span {
-  max-height: 1.2rem;
-  overflow: hidden;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 12px;
-  letter-spacing: 0.35px;
-  color: white;
-}
-.video--details {
-  position: relative;
-  display: grid;
-  grid-template-columns: auto 1fr;
-}
-.video--details__avatar {
-  height: 36px;
-  margin-top: 12px;
-  margin-right: 12px;
-  display: inline-block;
-}
-.video--details__avatar img {
-  background-color: var(--placeholderBg);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  overflow: hidden;
-  aspect-ratio: 1/1;
-  display: inline-block;
-}
-.video--details__meta {
-  overflow-x: hidden;
-  padding-right: 24px;
-}
-.video--details__meta-data {
-  max-height: 36px;
-  overflow: hidden;
-  display: block;
-  -webkit-line-clamp: 2;
-  display: box;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  white-space: normal;
-  display: flex;
-  color: var(--text-color);
-}
-.video--details__meta-data-views, .video--details__meta-data-published {
-  display: inline-block;
-  color: var(--channelText);
-  font-family: var(--font);
-  font-size: 12px;
-  line-height: 18px;
-  font-weight: 400;
-}
-.video--details__meta-data-published::before {
-  content: "•";
-  margin: 0 4px;
-}
-.video--details__title {
-  margin: 12px 0 4px;
-  color: var(--text-color);
-  font-family: var(--font);
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 500;
-  max-height: 44px;
-  overflow: hidden;
-  display: block;
-  -webkit-line-clamp: 2;
-  display: box;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  white-space: normal;
-}
-.video--details__channelTitle {
-  color: var(--channelText);
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 400;
-  margin: 0;
-}
-@media (max-width: 495px) {
-  .video--placeholder {
-    width: 320px;
-  }
-}
-@media (max-width: 480px) {
-  .video--placeholder {
-    width: 100%;
-  }
-}
-@keyframes loading {
-  100% {
-    transform: translateX(100%);
-  }
-}
-.video--placeholder .video--thumbnail {
-  border-radius: 12px;
-}
-.video--placeholder .video--thumbnail img {
-  aspect-ratio: 16/9;
-  background-color: var(--placeholderBg);
-}
-.video--placeholder .video--thumbnail__overlays {
-  display: none;
-}
-.video--placeholder .video--details__title, .video--placeholder .video--details__channelTitle {
-  background: var(--placeholderBg);
-  height: 16px;
-  border-radius: 2px;
-}
-.video--placeholder .video--details__title {
-  width: 100%;
-  margin-bottom: 10px;
-}
-.video--placeholder .video--details__channelTitle {
-  width: 66.66666%;
-}
-.video--placeholder .video--details__meta-data {
-  display: none;
-}
-.video--wrapper.loading .loader, .video--wrapper.loading .video--details__title, .video--wrapper.loading .video--details__channelTitle, .video--wrapper.loading .video--thumbnail {
-  overflow: hidden;
-}
-.video--wrapper.loading .loader::after, .video--wrapper.loading .video--details__title::after, .video--wrapper.loading .video--details__channelTitle::after, .video--wrapper.loading .video--thumbnail::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: loading 1.5s infinite;
-}
-.darkmode {
-  --text-color: #f1f1f1;
-  --text-invert: #0f0f0f;
-  --channelText: #aaa;
-  --background: #0f0f0f;
-  --placeholderBg: #232323;
-  --placeholderGradient: rgba(255, 255, 255, 0.05);
-}
-
-.checkbox-wrapper .tgl {
-  display: none;
-}
-.checkbox-wrapper .tgl + .tgl-btn {
-  background: #333333;
-  border-radius: 2em;
-  padding: 6px;
-  transition: all 0.3s ease;
-  outline: 0;
-  display: block;
-  width: 4em;
-  height: 2em;
-  position: relative;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.checkbox-wrapper .tgl + .tgl-btn::before, .checkbox-wrapper .tgl + .tgl-btn::after {
-  position: relative;
-  display: block;
-  content: "";
-  height: 100%;
-}
-.checkbox-wrapper .tgl + .tgl-btn::before {
-  display: none;
-  width: 50%;
-}
-.checkbox-wrapper .tgl + .tgl-btn::after {
-  left: 0;
-  border-radius: 50%;
-  background: #fff;
-  width: unset;
-  aspect-ratio: 1/1;
-  transition: all 0.2s ease;
-}
-.checkbox-wrapper .tgl:checked + .tgl-btn {
-  background: #f0f0f0;
-}
-.checkbox-wrapper .tgl:checked + .tgl-btn:after {
-  transform: translateX(150%);
-  background: #333333;
-}
-.checkbox-wrapper .tgl:hover + .tgl-btn {
-  box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.75), 0px 0px 30px 0 rgba(255, 255, 255, 0.5), 0px 0px 60px 0 rgba(255, 255, 255, 0.25);
-}
-.checkbox-wrapper .icon {
-  width: 20px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-invert);
-}
-.checkbox-wrapper .icon_sun {
-  left: 10%;
-}
-.checkbox-wrapper .icon_moon {
-  right: 10%;
-}
-</style>
-
-  <script>
-  window.console = window.console || function(t) {};
-</script>
-
-  
-  
-</head>
-
-<body translate="no">
-  <!-- Darkmode Toggle -->
-<section class="container pt-5">
-	<div class="checkbox-wrapper">
-		<input class="tgl" id="darkmode" type="checkbox" />
-		<label class="tgl-btn" for="darkmode">
-			<svg class="icon icon_sun" width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<circle cx="11.9998" cy="11.9998" r="5.75375" fill="currentColor" />
-				<g>
-					<circle cx="3.08982" cy="6.85502" r="1.71143" transform="rotate(-60 3.08982 6.85502)" fill="currentColor" />
-					<circle cx="3.0903" cy="17.1436" r="1.71143" transform="rotate(-120 3.0903 17.1436)" fill="currentColor" />
-					<circle cx="12" cy="22.2881" r="1.71143" fill="currentColor" />
-					<circle cx="20.9101" cy="17.1436" r="1.71143" transform="rotate(-60 20.9101 17.1436)" fill="currentColor" />
-					<circle cx="20.9101" cy="6.8555" r="1.71143" transform="rotate(-120 20.9101 6.8555)" fill="currentColor" />
-					<circle cx="12" cy="1.71143" r="1.71143" fill="currentColor" />
-				</g>
-				</circle>
-			</svg>
-			<svg class="icon icon_moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 50 50">
-				<path d="M 43.81 29.354 C 43.688 28.958 43.413 28.626 43.046 28.432 C 42.679 28.238 42.251 28.198 41.854 28.321 C 36.161 29.886 30.067 28.272 25.894 24.096 C 21.722 19.92 20.113 13.824 21.683 8.133 C 21.848 7.582 21.697 6.985 21.29 6.578 C 20.884 6.172 20.287 6.022 19.736 6.187 C 10.659 8.728 4.691 17.389 5.55 26.776 C 6.408 36.163 13.847 43.598 23.235 44.451 C 32.622 45.304 41.28 39.332 43.816 30.253 C 43.902 29.96 43.9 29.647 43.81 29.354 Z" fill="currentColor" />
-			</svg>
-		</label>
-	</div>
-</section>
-
-<!-- Meat & Potatoes -->
-<section class="container z-index-1 py-5">
-	<div class="row video--container">
-		<div id="template__0" class="video--placeholder video--wrapper">
-			<!-- This is our repeated component that we'll clone  -->
-			<a class="video" href="#">
-				<div class="video--thumbnail">
-					<img 
-						 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-						 srcset=""
-						 sizes="(max-width: 992px) 480px, 320px"
-					 >
-					<div class="video--thumbnail__overlays">
-						<span></span>
-					</div>
-				</div>
-				<div class="video--details">
-					<div class="video--details__avatar">
-						<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-					</div>
-					<div class="video--details__meta">
-						<h3 class="video--details__title"></h3>
-						<h4 class="video--details__channelTitle"></h4>
-						<div class="video--details__meta-data">
-							<div class="video--details__meta-data-views"></div>
-							<time class="video--details__meta-data-published"></time>
-						</div>
-					</div>
-				</div>
-			</a>
-			<!-- end clone -->
-		</div>
-	</div>
-  </section>
-  <!-- ha, made you look  -->
-  
-      <script id="rendered-js" type="module">
-// =====================
-// Darkmode
-// -- this has nothing to do with the video bit, it's just neat
-// =====================
-const body = document.querySelector("body"),
-drkTgl = document.querySelector("#darkmode"),
-drkMd = {
-  on() {
-    drkTgl.checked = true;
-    body.classList.add("darkmode");
-  },
-  off() {
-    drkTgl.checked = false;
-    body.classList.remove("darkmode");
-  } };
-
-// Check system preference
-if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-  drkMd.on();
-} else {
-  drkMd.off();
-}
-
-// Watch for system preference change
-window.
-matchMedia("(prefers-color-scheme: dark)").
-addEventListener("change", event => {
-  const colorPref = event.matches ? drkMd.on() : drkMd.off();
-  return colorPref;
-});
-// Darkmode Toggle btn
-drkTgl.addEventListener("change", function () {
-  const colorPref = drkTgl.checked ? drkMd.on() : drkMd.off();
-  return colorPref;
-});
-
-// ====================
-//  Youtube API Video Grabber
-// ====================
-
-// import tool to convert video durations
-import ytDurationFormat from "https://cdn.skypack.dev/youtube-duration-format@0.2.0";
-// Import fancybox for video modals
-import * as FancyappsUi from "https://cdn.skypack.dev/@fancyapps/ui@4.0.31";
-
-// Format view counts
-function formatNumber(input) {
-  const ranges = [
-  {
-    divider: 1e3,
-    suffix: "K" },
-
-  {
-    divider: 1e6,
-    suffix: "M" },
-
-  {
-    divider: 1e9,
-    suffix: "B" }];
+<link rel="stylesheet" href="https://www.goiptv.top/site_assets/css/splide.min.css">
 
 
-  for (let i = ranges.length - 1; i >= 0; i--) {if (window.CP.shouldStopExecution(0)) break;
-    if (input > ranges[i].divider) {
-      let quotient = input / ranges[i].divider;
-      if (quotient < 10) {
-        quotient = Math.floor(quotient * 10) / 10;
-      } else {
-        quotient = Math.floor(quotient);
+
+<!-- Splide Slider CSS -->
+
+
+
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap" rel="stylesheet">
+
+ 
+ <link href="https://www.goiptv.top/site_assets/videojs_player/css/videojs_style1.min.css" rel="stylesheet" type="text/css" />
+<script src="https://unpkg.com/video.js/dist/video.min.jsxx"></script>
+
+
+
+
+
+<!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Preload Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Load stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://vjs.zencdn.net/8.14.0/video-js.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://anym3u8player.com/newcss.css">
+<script async src=""
+     crossorigin="anonymous"></script>
+
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AnyM3U8Player",
+      "url": "https://anym3u8player.com/",
+      "description": "Free HLS M3U8 Player Online and livestream player. Play M3U8, HLS, HTTP live streaming, and more. Test your HLS video streams.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
       }
-      return quotient.toString() + ranges[i].suffix;
     }
-  }window.CP.exitedLoop(0);
-  return input.toString();
-}
-// Format published date
-function formatDate(date) {
-  let published = new Date(date),
-  timeSincePublished = parseInt((today - published) / (1000 * 60 * 60 * 24), 10);
-  if (timeSincePublished < 30) {// avg # of days in a month is ~30.4, so I guess we round down
-    // Days
-    timeSincePublished = timeSincePublished + " days ago";
-  } else if (timeSincePublished < 365) {// i aint got no time for leap years
-    // Months
-    let conversion = timeSincePublished / 30;
-    conversion = Math.floor(conversion);
-    const s = conversion < 2 ? "" : "s";
-    timeSincePublished = conversion + " month" + s + " ago";
-  } else {
-    // Years
-    let conversion = timeSincePublished / 30 / 12;
-    conversion = Math.floor(conversion);
-    const s = conversion < 2 ? "" : "s";
-    timeSincePublished = conversion + " year" + s + " ago";
-  }
-  return timeSincePublished;
-}
-// convert youtube video duration time into readable time
-function formatViews(views) {
-  let duration = views;
-  duration = ytDurationFormat(duration);
-  // drop leading zeros
-  if (duration.charAt(0) === "0") {
-    duration = duration.substring(1);
-  }
-  return duration;
-}
-
-/* define some variables for the API
-	- Playlist ID for the playlist - this works via the playlist API to grab a select group of videos
-	- API Token - this has a limit on the free api, I suggest caching the API response and serving the cache instead
-	- API Endpoint - using playlistItems, grabs the snippet & contentDetails, and has a max output of 50. Any higher and you have to query the API again for more vids
-	- Account Avatar
-		- fetched from the channels endpoint; declaring it outside the fetch so we can use it
-*/
-let channelId = "UCjd32KVfRCli1d9iqo4YZ5A",
-playlistId = "PLcuEpRrKy7nMbQ_zLwaIeHeukDQ_YFsgA",
-token = "AIzaSyDhYSYpsXM9mRvXS0KanX2emo87D17q1gw",
-playlistUrl = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=50&playlistId=${playlistId}&key=${token}`,
-channelUrl = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&pageToken=UCjd32KVfRCli1d9iqo4YZ5A&key=${token}`,
-container = document.querySelector(".video--container"),
-placeholder = document.querySelector(".video--placeholder"),
-today = new Date(),
-avatar;
-// Grab channel avatar
-const getAvatar = fetch(channelUrl).
-then(response => response.json()).
-then(data => {
-  avatar = data.items[0].snippet.thumbnails.default.url;
-}).
-catch(function (error) {
-  console.log(error);
-});
-// Make the videos!
-const result = fetch(playlistUrl).
-then(response => response.json()).
-then(data => {
-  let videos = data.items;
-  // Create placeholders
-  for (let i = 1; i < videos.length; i++) {if (window.CP.shouldStopExecution(1)) break;
-    var clone = placeholder.cloneNode(true);
-    clone.id = "template__" + i;
-    container.appendChild(clone);
-  }
-  // Add loading state to each placeholder. If I did this in the previous step, the animations weren't in sync
-  window.CP.exitedLoop(1);const placeholders = document.querySelectorAll('.video--placeholder');
-  placeholders.forEach(ph => {
-    ph.classList.add('loading');
-  });
-  // populate each video
-  videos.map((video, index) => {
-    // Check for private videos; will throw an error and you'll have an empty placeholder.
-    if (videos[index].snippet.title !== 'Private video') {
-      // Grab a placeholder
-      const div = document.getElementById("template__" + index);
-      // Grab video specific data
-      fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${video.contentDetails.videoId}&key=${token}`).
-      then(response => response.json()).
-      then(data => {
-        // assign data to their perspective elements
-        // This is ugly as hell. There's prob a better way to do it, but I'll cross that bridge later
-        let vid = div.querySelector(".video"),
-        vidThumbnail = vid.querySelector(".video--thumbnail img"),
-        vidDuration = vid.querySelector(".video--thumbnail__overlays span"),
-        vidAvatar = vid.querySelector(".video--details__avatar img"),
-        vidTitle = vid.querySelector(".video--details__title"),
-        vidChannel = vid.querySelector(".video--details__channelTitle"),
-        vidViews = vid.querySelector(".video--details__meta-data-views"),
-        vidDate = vid.querySelector(".video--details__meta-data-published");
-
-        vid.setAttribute('data-fancybox', '');
-        vid.setAttribute('data-src', 'https://youtu.be/' + video.contentDetails.videoId);
-        vid.setAttribute('href', 'javascript:;');
-        vid.classList.add('video');
-        vidThumbnail.src = video.snippet.thumbnails.medium.url;
-        vidThumbnail.setAttribute('srcset', video.snippet.thumbnails.high.url + ' 480w, ' + video.snippet.thumbnails.medium.url + ' 320w');
-        vidThumbnail.setAttribute('sizes', '(max-width: 992px) ' + video.snippet.thumbnails.high.url.width + 'px, ' + video.snippet.thumbnails.medium.url.width + 'px');
-        vidDuration.textContent = formatViews(data.items[0].contentDetails.duration);
-        vidAvatar.src = avatar;
-        vidTitle.textContent = video.snippet.title;
-        vidChannel.textContent = video.snippet.channelTitle;
-        vidViews.textContent = formatNumber(data.items[0].statistics.viewCount) + ' views';
-        vidDate.textContent = formatDate(video.contentDetails.videoPublishedAt);
-        // remove placeholder styling
-        div.classList.remove('video--placeholder', 'loading');
-      }).
-      catch(function (error) {
-        console.log(error);
-      });
-    } else {
-      // remove placeholder for private video
-      const div = document.getElementById("template__" + index);
-      div.remove();
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is anym3u8player.com?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "anym3u8player.com is a user-friendly website for playing M3U8 - HLS streams online. Simply enter the M3U8 link and click 'play' to start streaming content."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What formats does anym3u8player.com support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Anym3u8player.com supports numerous formats, including m3u8, mp4, HLS, MPEG DASH, and FLV. It is also compatible with Shaka's MPEG DASH implementation and handles WebTorrent streams."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is M3U8?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "M3U8 is a file format for storing multimedia playlists, commonly used for audio and video playlists but also applicable to images. Many media players, such as VLC, support M3U8 file playback."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the HTTP and HTTPS difference when it comes to streaming?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If your M3U8 link starts with http://, you should use our M3U8 player without https://, as the stream won't work otherwise. This solves cross-origin issues between http:// and https://."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I test my M3U8 - HLS links?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, anym3u8player.com offers an online test player for users to verify their M3U8 - HLS links before using them on other platforms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I want to play encrypted content?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Whether you want to play a simple M3U8 link or access encrypted content, anym3u8player.com is your go-to website for all your M3U8 playback needs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I embed the player on my website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can embed the player on your website using an iframe. The URL can be built using either the HTTPS method (for secured websites with SSL certificates) or the HTTP method (for non-secured websites)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What additional features does anym3u8player.com offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Anym3u8player.com offers a variety of features including an MP4 Player, an M3U Player, an M3U Playlist Generator, HLS Player Chrome and Edge Extensions, a DASH Player, an Embed Player Online feature, HLS Video Test tools, and a Livestream Player. These tools support a wide range of media formats and provide solutions for cross-origin streaming issues, offering seamless video playback and live streaming capabilities."
+          }
+        }
+      ]
     }
-  });
-}).
-catch(function (error) {
-  console.log(error);
-});
-//# sourceURL=pen.js
     </script>
 
-  
-</body>
+    </head>
 
+<script defer src="https://stats.techyhub.co/script.js" data-website-id="cb7beb9e-23b5-44c2-978f-8440a4d4c6f8"></script>
+<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="logo" href="/">Any<span>M3U8</span>Player</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/your-tv/">Your TV</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ultimate-player-generator/">Ultimate Player Generator</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/player-generator/">P2P Player</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/m3u8-player-chat/">Player+Chat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/mp4-player/">MP4 Player</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/faq/">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+        <!-- Compact Player Section (shown when URL is provided) -->
+    <section class="compact-player py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="text-center mb-4">HLS M3U8 Livestream Player</h1>
+                    
+                    <div class="player-card">
+                        <form id="mainForm" action="" method="GET" class="mb-3">
+                            <div class="input-group">
+                                <input type="text" class="url-input" id="m3u8-url" name="url" value="" required>
+                                <button type="submit" class="btn btn-primary custom-play-btn">
+                                    <i class="fas fa-play"></i> Play
+                                </button>
+                            </div>
+                            
+                            <div class="player-buttons mt-3">
+                                <button type="button" class="btn btn-secondary btn-player" id="fullscreenPlayButton">
+                                    <i class="fas fa-expand"></i> Fullscreen
+                                </button>
+                                <button type="button" class="btn btn-accent btn-player" id="chatPlayButton">
+                                    <i class="fas fa-comments"></i> With Chat
+                                </button>
+                                <button type="button" class="btn btn-info btn-player" id="fullscreenVideoJS">
+                                    <i class="fas fa-video"></i> VideoJS
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div class="embed-responsive">
+                            <video id="video1" class="video-js vjs-big-play-centered vjs-16-9"  poster="" autoplay controls preload="auto">
+<!--	<source src="https://tvradiozap.eu/index.php/640" type="application/x-mpegURL">
+		<source src="https://icecast.radiofrance.fr/franceculture-hifi.aac">
+		<source src="https://artesimulcast.akamaized.net/hls/live/2031003-b/artelive_fr/master_v720.m3u8" type="application/x-mpegURL">
+		<source src="https://tv7.live-kd.com/live/tv7/ngrp:tv7_Wifi/manifest.mpd" type="application/dash+xml"> -->
+	 
+	</video>                       </div>
+                        
+                        <div class="sharing-tools">
+                            <h4><i class="fas fa-share-alt me-2"></i> Share this stream:</h4>
+                            <div class="share-buttons">
+                                <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fanym3u8player.com%2F%3Furl%3Dhttps%3A%2F%2Flove2live.wideiptv.top%2FELEVEN1%2Ftracks-v1%2Findex.fmp4.m3u8" target="_blank" class="share-btn btn-facebook">
+                                    <i class="fab fa-facebook-f"></i> Facebook
+                                </a>
+                                <a href="https://wa.me/?text=https%3A%2F%2Fanym3u8player.com%2F%3Furl%3Dhttps%3A%2F%2Flove2live.wideiptv.top%2FELEVEN1%2Ftracks-v1%2Findex.fmp4.m3u8" target="_blank" class="share-btn btn-whatsapp">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </a>
+                                <a href="https://twitter.com/share?url=https%3A%2F%2Fanym3u8player.com%2F%3Furl%3Dhttps%3A%2F%2Flove2live.wideiptv.top%2FELEVEN1%2Ftracks-v1%2Findex.fmp4.m3u8" target="_blank" class="share-btn btn-twitter">
+                                    <i class="fab fa-twitter"></i> Twitter
+                                </a>
+                                <a href="https://telegram.me/share/url?url=https%3A%2F%2Fanym3u8player.com%2F%3Furl%3Dhttps%3A%2F%2Flove2live.wideiptv.top%2FELEVEN1%2Ftracks-v1%2Findex.fmp4.m3u8" target="_blank" class="share-btn btn-telegram">
+                                    <i class="fab fa-telegram-plane"></i> Telegram
+                                </a>
+                                <a href="mailto:?subject=Video&body=https%3A%2F%2Fanym3u8player.com%2F%3Furl%3Dhttps%3A%2F%2Flove2live.wideiptv.top%2FELEVEN1%2Ftracks-v1%2Findex.fmp4.m3u8" class="share-btn btn-email">
+                                    <i class="fas fa-envelope"></i> Email
+                                </a>
+                                <button class="share-btn btn-embed" onclick="showEmbedPopup()">
+                                    <i class="fas fa-code"></i> Embed
+                                </button>
+                                <button class="share-btn btn-copy" onclick="copyLink()">
+                                    <i class="fas fa-link"></i> Copy Link
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+
+    
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">Latest News</h2>
+            
+            <div class="row g-4">
+                                <div class="col-lg-4 col-md-6">
+                    <div class="news-card">
+                        <a href="https://anym3u8player.com/faq/media-streaming-solutions/" class="news-link">
+                            <img src="https://anym3u8player.com/faq/wp-content/uploads/2025/04/m3u8-player.jpg" alt="Media Streaming Solutions" class="news-img" loading="lazy">
+                            <div class="news-content">
+                                <h3 class="news-title">Media Streaming Solutions</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                                <div class="col-lg-4 col-md-6">
+                    <div class="news-card">
+                        <a href="https://anym3u8player.com/faq/new-ultimate-player-generator-create-custom-video-players-in-minutes/" class="news-link">
+                            <img src="https://anym3u8player.com/faq/wp-content/uploads/2023/12/logo-m3u8-player-1024x585.png" alt="New Ultimate Player Generator: Create Custom Video Players in Minutes!" class="news-img" loading="lazy">
+                            <div class="news-content">
+                                <h3 class="news-title">New Ultimate Player Generator: Create Custom Video Players in Minutes!</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                                <div class="col-lg-4 col-md-6">
+                    <div class="news-card">
+                        <a href="https://anym3u8player.com/faq/new-m3u8-player-website/" class="news-link">
+                            <img src="https://anym3u8player.com/faq/wp-content/uploads/2023/12/logo-m3u8-player-1024x585.png" alt="New M3U8 Player website" class="news-img" loading="lazy">
+                            <div class="news-content">
+                                <h3 class="news-title">New M3U8 Player website</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                                <div class="col-lg-4 col-md-6">
+                    <div class="news-card">
+                        <a href="https://anym3u8player.com/faq/radio-world-map-php-script-similar-to-radio-garden/" class="news-link">
+                            <img src="https://anym3u8player.com/faq/wp-content/uploads/2025/01/php-radio-stations-map-1024x505.png" alt="🌍 Radio World Map – PHP Script similar to Radio.Garden" class="news-img" loading="lazy">
+                            <div class="news-content">
+                                <h3 class="news-title">🌍 Radio World Map – PHP Script similar to Radio.Garden</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                                <div class="col-lg-4 col-md-6">
+                    <div class="news-card">
+                        <a href="https://anym3u8player.com/faq/php-tv-directory-iptv-channel-directory-with-epg-support/" class="news-link">
+                            <img src="https://anym3u8player.com/faq/wp-content/uploads/2025/01/tvonline.png" alt="PHP TV Directory – IPTV Channel Directory with EPG Support" class="news-img" loading="lazy">
+                            <div class="news-content">
+                                <h3 class="news-title">PHP TV Directory – IPTV Channel Directory with EPG Support</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                                <div class="col-lg-4 col-md-6">
+                    <div class="news-card">
+                        <a href="https://anym3u8player.com/faq/script-for-creating-custom-tv-and-webcam-playlists-with-m3u-player/" class="news-link">
+                            <img src="https://anym3u8player.com/faq/wp-content/uploads/2024/05/m3u-player-1024x513.png" alt="Script for Creating Custom TV and Webcam Playlists with M3U Player" class="news-img" loading="lazy">
+                            <div class="news-content">
+                                <h3 class="news-title">Script for Creating Custom TV and Webcam Playlists with M3U Player</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                                <div class="col-lg-4 col-md-6">
+                    <div class="news-card">
+                        <a href="https://anym3u8player.com/faq/watch-multiple-television-channels-simultaneously-with-multi-tv/" class="news-link">
+                            <img src="https://anym3u8player.com/faq/wp-content/uploads/2024/05/watch-multiple-tv-channels-1024x489.png" alt="Watch multiple television channels simultaneously with Multi TV" class="news-img" loading="lazy">
+                            <div class="news-content">
+                                <h3 class="news-title">Watch multiple television channels simultaneously with Multi TV</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                                <div class="col-lg-4 col-md-6">
+                    <div class="news-card">
+                        <a href="https://anym3u8player.com/faq/our-video-player-helps-you-to-solve-the-cors-origin-issues/" class="news-link">
+                            <img src="https://anym3u8player.com/faq/wp-content/uploads/2024/04/live-streaming-cors-issue.png" alt="Our Video Player helps you to solve the cors origin issues" class="news-img" loading="lazy">
+                            <div class="news-content">
+                                <h3 class="news-title">Our Video Player helps you to solve the cors origin issues</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                                <div class="col-lg-4 col-md-6">
+                    <div class="news-card">
+                        <a href="https://anym3u8player.com/faq/the-ultimate-video-player-generator/" class="news-link">
+                            <img src="https://anym3u8player.com/faq/wp-content/uploads/2024/04/ultimate-video-player-generator-1024x678.png" alt="The Ultimate P2P Video Streaming Player Generator" class="news-img" loading="lazy">
+                            <div class="news-content">
+                                <h3 class="news-title">The Ultimate P2P Video Streaming Player Generator</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                            </div>
+        </div>
+    </section>
+
+        
+<section class="features-services-section py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Our Video Player Services</h2>
+        
+        <div class="row mt-4">
+            <div class="col-lg-6 mb-4">
+                <div class="feature-card">
+                    <h3><i class="fas fa-play-circle me-2"></i>M3U8 Player</h3>
+                    <p id="specific-p">Our m3u8 player can help you to test your m3u8 links. It is very easy to use and you just need to enter the m3u8 link in the above player.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="feature-card">
+                    <h3><i class="fas fa-video me-2"></i>MP4 Player</h3>
+                    <p id="specific-p">By default the above player can play mp4 links but we also did a dedicated page for the <a href="https://anym3u8player.com/mp4-player/">MP4 Player</a>.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="feature-card">
+                    <h3><i class="fas fa-list-alt me-2"></i>M3U Player</h3>
+                    <p id="specific-p">In case you want to play M3U links or files you can use our M3U players which can be found in the following locations <a href="https://anym3u8player.com/m3u-player/">M3U Player 1</a> or this one which saves in the cookies the links in order to be used after closing the Browser <a href="https://anym3u8player.com/your-tv/">M3U Player 2</a>.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="feature-card">
+                    <h3><i class="fas fa-file-code me-2"></i>M3U Playlist Generator</h3>
+                    <p id="specific-p">We have created an <a href="https://anym3u8player.com/m3u-generator/">M3U Playlist Generator</a> to assist you in creating your own playlist for your m3u player or whatever your needs are.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-5">
+            <div class="feature-card">
+                <h2><i class="fas fa-broadcast-tower me-2"></i>HLS HTTP Live Streaming</h2>
+                <p id="specific-p">Looking for a video player that solves cross-origin issues between <span class="http">http://</span> and <span class="https">https://</span>? Find the solution <a href="https://anym3u8player.com/faq/php-hls-m3u8-mp4-reverse-proxy-solution-for-fixing-cross-origin-streaming-issues/" class="PHP HLS / M3U8 / MP4 reverse proxy">HERE</a>. This PHP reverse proxy for HLS / M3U8 / MP4 requires no programming knowledge or Nginx/NodeJs installation.</p>
+                
+                <h3 class="mt-4"><i class="fab fa-chrome me-2"></i>HLS PLAYER Chrome and Edge Extension</h3>
+                <p id="specific-p"><b>Chrome Extension</b> <a href="https://chromewebstore.google.com/detail/videoplayer-mpdm3u8m3uepg/opmeopcambhfimffbomjgemehjkbbmji" class="M3U8 Player chrome extension">HERE</a> and <b>Edge Extension</b> <a href="https://microsoftedge.microsoft.com/addons/detail/hls-m3u8-player-live-/bmmmdhlnijgodpfbhpgjfkpjiigbpcbk" class="M3U8 Player chrome extension">HERE</a>.</p>
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-lg-6 mb-4">
+                <div class="feature-card">
+                    <h2><i class="fas fa-play me-2"></i>HLS Player</h2>
+                    <p class="content"><a href="https://anym3u8player.com/">M3u8 player Online</a> supports by default m3u8, mp4, HLS, MPEG DASH, and FLV. It's compatible with Shaka's MPEG DASH implementation and handles WebTorrent streams. The player also works with other MSE (Media Source Extension) libraries for a broad range of media content.</p>
+                    <p class="content">Anym3u8player.com is a user-friendly website for playing M3U8 - HLS streams online. Just enter the M3U8 link and click <a href="https://anym3u8player.com/">"play"</a> to start streaming content.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="feature-card">
+                    <h2><i class="fas fa-tachometer-alt me-2"></i>DASH Player</h2>
+                    <p class="content">For those who rely on Dynamic Adaptive Streaming over HTTP (DASH), our DASH player offers optimized streaming, adapting to your internet speed to deliver the best quality possible.</p>
+                    
+                    <h2 class="mt-4"><i class="fas fa-file-video me-2"></i>M3U8 Player</h2>
+                    <p class="content">M3U8 links can be tricky, but not with our dedicated m3u8 player. Simply play the m3u8 link, and let our player handle the rest, offering you a nice playback.</p>
+                    <p class="content">M3U8 is a file format for storing multimedia playlists, commonly used for audio and video playlists but also applicable to images. Many media players, such as VLC, support M3U8 file playback.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-3">
+            <div class="col-lg-6 mb-4">
+                <div class="feature-card">
+                    <h2><i class="fas fa-code me-2"></i>Embed Player Online</h2>
+                    <p class="content">Integrate our player into your website or platform with our embed player online feature. It's easy to use, ensuring your viewers enjoy seamless video playback.</p>
+                    
+                    <h3 class="mt-4"><i class="fas fa-arrows-alt me-2"></i>Video Player iframe Resizer</h3>
+                    <p class="content">If your embedded video doesn't load well on your website, maybe is too small or is not responsive, our website helps you to resize the video player with our <a href="https://anym3u8player.com/iframe-resizer/">visual iframe resizer</a>.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="feature-card">
+                    <h2><i class="fas fa-vial me-2"></i>HLS Video Test</h2>
+                    <p class="content">Before going live, test your HLS video streams with our HLS Player online. Ensure everything is in order, from video quality to sound, and deliver the best to your audience.</p>
+                    
+                    <h2 class="mt-4"><i class="fas fa-satellite-dish me-2"></i>Livestream Player</h2>
+                    <p class="content">Experience the beauty of live broadcasting with our advanced livestream player. Whether you're hosting a webinar, live event, or simply sharing moments, our player ensures the best streaming for your audience.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-3">
+            <div class="feature-card">
+                <h2><i class="fas fa-link me-2"></i>M3U8 Testing Links</h2>
+                <p class="content">In this article <a href="https://anym3u8player.com/faq/free-hls-m3u8-resources-for-stream-player-testing-latest-2024-collection/">Free HLS m3u8 Resources for Stream Player Testing</a> you will find a list of m3u8 testing links over https or http.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <h4 class="footer-title">About Us</h4>
+                    <p>AnyM3U8Player.com provides a free, easy-to-use online player for M3U8, HLS, and various other streaming formats. Our mission is to make media streaming accessible to everyone.</p>
+                    <ul class="social-links mt-3">
+                        <li><a href="https://www.facebook.com/anym3u8player"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://x.com/AnyM3U8Player"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.youtube.com/@m3u8player"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://github.com/anym3u8player"><i class="fab fa-github"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/your-tv/">Your TV</a></li>
+                        <li><a href="/mp4-player/">MP4 Player</a></li>
+                        <li><a href="/m3u8-player-chat/">Player+Chat</a></li>
+                        <li><a href="/faq/">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h4 class="footer-title">Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="/player-generator/">P2P Player Generator</a></li>
+                        <li><a href="/radio-player/">Radio Player Generator</a></li>
+                        <li><a href="/m3u-generator/">M3U Playlist Generator</a></li>
+                        <li><a href="/iframe-resizer/">iFrame Resizer</a></li>
+                        <li><a href="/m3u-player/">M3U Player</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="/faq/free-hls-m3u8-resources-for-stream-player-testing-latest-2024-collection/">Test Links</a></li>
+                        <li><a href="/faq/php-hls-m3u8-mp4-reverse-proxy-solution-for-fixing-cross-origin-streaming-issues/">CORS Solution</a></li>
+                        <li><a href="https://chromewebstore.google.com/detail/videoplayer-mpdm3u8m3uepg/opmeopcambhfimffbomjgemehjkbbmji">Chrome Extension</a></li>
+                        <li><a href="https://microsoftedge.microsoft.com/addons/detail/hls-m3u8-player-live-/bmmmdhlnijgodpfbhpgjfkpjiigbpcbk">Edge Extension</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 AnyM3U8Player.com. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Donation Button -->
+    <a href="https://ko-fi.com/m3u8player" class="donate-btn" target="_blank">
+        <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi donations" width="20" height="20">
+        Support Us
+    </a>
+
+    <!-- Embed Popup -->
+    <div class="embed-popup-overlay" id="embedOverlay"></div>
+    <div class="embed-popup" id="embedPopup">
+        <h4>Embed This Player</h4>
+        <p>Copy the code below to embed this player on your website:</p>
+        <textarea id="embedCode" readonly></textarea>
+        <div class="d-flex justify-content-between">
+            <button id="copyEmbedBtn"><i class="fas fa-copy me-2"></i> Copy Code</button>
+            <button id="closeEmbedBtn"><i class="fas fa-times me-2"></i> Close</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://vjs.zencdn.net/8.14.0/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls.js@latest"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form handling
+            const mainForm = document.getElementById('mainForm');
+            const urlInput = document.getElementById('m3u8-url');
+            
+            if (mainForm) {
+                mainForm.addEventListener('submit', function(event) {
+                    urlInput.value = urlInput.value.trim();
+                    // Form submits normally
+                });
+            }
+            
+            // Player button handlers
+            const fullscreenPlayButton = document.getElementById('fullscreenPlayButton');
+            const chatPlayButton = document.getElementById('chatPlayButton');
+            const fullscreenVideoJS = document.getElementById('fullscreenVideoJS');
+            
+            if (fullscreenPlayButton) {
+                fullscreenPlayButton.addEventListener('click', function() {
+                    const m3u8Url = urlInput.value.trim();
+                    
+                    if (validateUrl(m3u8Url)) {
+                        const fullScreenUrl = buildPlayerUrl(m3u8Url, 'fullscreen');
+                        window.open(fullScreenUrl, '_blank');
+                    }
+                });
+            }
+            
+            if (chatPlayButton) {
+                chatPlayButton.addEventListener('click', function() {
+                    const m3u8Url = urlInput.value.trim();
+                    
+                    if (validateUrl(m3u8Url)) {
+                        const chatUrl = buildPlayerUrl(m3u8Url, 'chat');
+                        window.location.href = chatUrl;
+                    }
+                });
+            }
+            
+            if (fullscreenVideoJS) {
+                fullscreenVideoJS.addEventListener('click', function() {
+                    const m3u8Url = urlInput.value.trim();
+                    
+                    if (validateUrl(m3u8Url)) {
+                        const videoJsUrl = buildPlayerUrl(m3u8Url, 'videojs');
+                        window.open(videoJsUrl, '_blank');
+                    }
+                });
+            }
+            
+            // Initialize VideoJS player if it exists on the page
+            const playerElement = document.getElementById('player');
+            if (playerElement && playerElement.classList.contains('video-js')) {
+                const player = videojs('player', {
+                    autoplay: false,
+                    muted: false,
+                    fluid: true,
+                    controls: true,
+                    responsive: true,
+                    techOrder: ['html5'],
+                    html5: {
+                        hls: {
+                            overrideNative: true
+                        }
+                    },
+                    controlBar: {
+                        playToggle: true,
+                        pictureInPictureToggle: true,
+                        fullscreenToggle: true
+                    }
+                });
+                
+                // Create custom play button outside the player
+                const customPlayBtn = document.querySelector('.custom-play-btn');
+                if (customPlayBtn) {
+                    customPlayBtn.addEventListener('click', function() {
+                        if (player.paused()) {
+                            player.play();
+                            this.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                        } else {
+                            player.pause();
+                            this.innerHTML = '<i class="fas fa-play"></i> Play';
+                        }
+                    });
+                }
+                
+                // Update button states on play/pause events
+                player.on('play', function() {
+                    const playBtn = document.querySelector('.custom-play-btn');
+                    if (playBtn) {
+                        playBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                    }
+                });
+                
+                player.on('pause', function() {
+                    const playBtn = document.querySelector('.custom-play-btn');
+                    if (playBtn) {
+                        playBtn.innerHTML = '<i class="fas fa-play"></i> Play';
+                    }
+                });
+                
+                // Create a custom button for screenshots
+                class SnapshotButton extends videojs.getComponent("Button") {
+                    constructor(player, options) {
+                        super(player, options);
+                        this.addClass("vjs-snapshot-button");
+                        this.controlText("Take Snapshot");
+                    }
+
+                    handleClick() {
+                        const videoElement = player.el().getElementsByTagName("video")[0];
+                        const canvas = document.createElement("canvas");
+                        canvas.width = videoElement.videoWidth;
+                        canvas.height = videoElement.videoHeight;
+                        const ctx = canvas.getContext("2d");
+                        ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                        const dataURI = canvas.toDataURL("image/jpeg");
+
+                        // Trigger download
+                        const link = document.createElement("a");
+                        link.href = dataURI;
+                        link.download = "snapshot.jpg";
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    }
+                }
+
+                // Register the new component
+                videojs.registerComponent("SnapshotButton", SnapshotButton);
+
+                // Add the snapshot button to the control bar
+                player.ready(function() {
+                    var controlBar = player.getChild("controlBar");
+                    var PiPButtonIndex = controlBar.children().findIndex(child => child.name() === "PictureInPictureToggle");
+                    controlBar.addChild("SnapshotButton", {}, PiPButtonIndex);
+                });
+            }
+            
+            // Utility functions
+            function validateUrl(url) {
+                if (!url) {
+                    alert('Please enter a valid URL.');
+                    return false;
+                }
+                
+                if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                    alert('Invalid URL. Please ensure it starts with http:// or https://');
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            function buildPlayerUrl(url, type) {
+                // Define the list of worker addresses
+                const addresses = [
+                    "https://hello-world-twilight-boat-1fe5.1doi3.workers.dev/",
+                    "https://worker-restless-snowflake-bd40.1doi3.workers.dev/",
+                    "https://hello-world-steep-fog-a4de.1doi3.workers.dev/",
+                    "https://worker-plain-bonus-524c.1doi3.workers.dev/",
+                    "https://hello-world-fragrant-dust-4d3e.1doi3.workers.dev/",
+                    "https://worker-polished-lab-1315.1doi3.workers.dev/",
+                    "https://worker-snowy-star-d9d6.1doi3.workers.dev/",
+                    "https://worker-damp-poetry-68b1.1doi3.workers.dev/"
+                ];
+                
+                function getRandomAddress() {
+                    return addresses[Math.floor(Math.random() * addresses.length)];
+                }
+                
+                function needsCorsProxy(url) {
+                    const ipPattern = /^(http:\/\/)?((\d{1,3}\.){3}\d{1,3})(:\d+)?\/.*$/;
+                    const domainWithPortPattern = /^(http:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z0-9-]+(:\d+)\/.*$/;
+                    return ipPattern.test(url) || domainWithPortPattern.test(url);
+                }
+                
+                let processedUrl = url;
+                const specialAddress = "https://billing.tfms.xyz/";
+                
+                if (url.startsWith('http://') && needsCorsProxy(url)) {
+                    // Special address for IP or domain with port
+                    processedUrl = specialAddress + url;
+                } else if (url.startsWith('http://')) {
+                    // Random worker for other HTTP URLs
+                    processedUrl = getRandomAddress() + url;
+                }
+                
+                let finalUrl = '';
+                
+                switch (type) {
+                    case 'fullscreen':
+                        finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent(processedUrl);
+                        break;
+                    case 'chat':
+                        finalUrl = 'https://anym3u8player.com/m3u8-player-chat/generate3.php?m3u8Url=' + encodeURIComponent(processedUrl);
+                        break;
+                    case 'videojs':
+                        finalUrl = "https://anym3u8player.com/tv/video-player.php?url=" + encodeURIComponent(processedUrl);
+                        break;
+                    default:
+                        finalUrl = "https://anym3u8player.com/?url=" + encodeURIComponent(processedUrl);
+                }
+                
+                return finalUrl;
+            }
+            
+            // Share functionality
+            window.copyLink = function() {
+                const m3u8Url = urlInput.value.trim();
+                
+                if (validateUrl(m3u8Url)) {
+                    const shareUrl = "https://anym3u8player.com/?url=" + encodeURIComponent(m3u8Url);
+                    
+                    // Create a temporary input element
+                    const dummy = document.createElement('input');
+                    document.body.appendChild(dummy);
+                    dummy.value = shareUrl;
+                    dummy.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(dummy);
+                    
+                    // Show a toast or alert
+                    alert('Link copied to clipboard!');
+                }
+            };
+            
+            // Embed popup functionality
+            const embedOverlay = document.getElementById('embedOverlay');
+            const embedPopup = document.getElementById('embedPopup');
+            const embedCode = document.getElementById('embedCode');
+            const copyEmbedBtn = document.getElementById('copyEmbedBtn');
+            const closeEmbedBtn = document.getElementById('closeEmbedBtn');
+            
+            window.showEmbedPopup = function() {
+                const m3u8Url = urlInput.value.trim();
+                
+                if (validateUrl(m3u8Url)) {
+                    const iframeCode = `<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width:100%;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+        webkitAllowFullScreen mozallowfullscreen allowfullscreen 
+        width="640" height="360" frameborder="0" allow="autoplay" 
+        src="https://vsalema.github.io/play3/?${encodeURIComponent(m3u8Url)}">
+    </iframe>
+</div>`;
+                    
+                    embedCode.value = iframeCode;
+                    embedOverlay.style.display = 'block';
+                    embedPopup.style.display = 'block';
+                }
+            };
+            
+            if (copyEmbedBtn) {
+                copyEmbedBtn.addEventListener('click', function() {
+                    embedCode.select();
+                    document.execCommand('copy');
+                    this.innerHTML = '<i class="fas fa-check me-2"></i> Copied!';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-copy me-2"></i> Copy Code';
+                    }, 2000);
+                });
+            }
+            
+            if (closeEmbedBtn) {
+                closeEmbedBtn.addEventListener('click', function() {
+                    embedOverlay.style.display = 'none';
+                    embedPopup.style.display = 'none';
+                });
+            }
+            
+            if (embedOverlay) {
+                embedOverlay.addEventListener('click', function() {
+                    embedOverlay.style.display = 'none';
+                    embedPopup.style.display = 'none';
+                });
+            }
+        });
+// Fake player interaction
+const fakePlayer = document.querySelector('.fake-player');
+const fakePlayButton = document.querySelector('.fake-play-button');
+const mainFormInput = document.getElementById('m3u8-url');
+
+if (fakePlayButton && mainFormInput) {
+    fakePlayButton.addEventListener('click', function() {
+        // Scroll to the input box
+        mainFormInput.scrollIntoView({ behavior: 'smooth' });
+        // Focus the input
+        setTimeout(() => {
+            mainFormInput.focus();
+            // Add a pulse animation to the input
+            mainFormInput.classList.add('pulse-animation');
+            setTimeout(() => {
+                mainFormInput.classList.remove('pulse-animation');
+            }, 1500);
+        }, 500);
+    });
+}
+
+// Add pulse animation style 
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.4); }
+        70% { box-shadow: 0 0 0 10px rgba(67, 97, 238, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(67, 97, 238, 0); }
+    }
+    .pulse-animation {
+        animation: pulse 0.75s 2;
+    }
+`;
+document.head.appendChild(style);
+    </script>
+
+<script src="https://www.goiptv.top/site_assets/videojs_player/js/videojs.min.js"></script>
+
+
+ 
+
+ <script src="https://www.goiptv.top/site_assets/videojs_player/plugins/videojs-chromecast.min.js"></script>
+			
+<script src="https://vsalema.github.io/play3/js/play52.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.0/js/jquery.nice-select.min.js"></script> 
+
+</body>
 </html>
