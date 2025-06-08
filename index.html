@@ -244,7 +244,7 @@
                         </form>
                         
                         <div class="embed-responsive">
-                            <video id="player" class="video-js vjs-big-play-centered vjs-16-9"  poster="" autoplay controls preload="auto">
+                            <video id="video1" class="video-js vjs-big-play-centered vjs-16-9"  poster="" autoplay controls preload="auto">
 <!--	<source src="https://tvradiozap.eu/index.php/640" type="application/x-mpegURL">
 		<source src="https://icecast.radiofrance.fr/franceculture-hifi.aac">
 		<source src="https://artesimulcast.akamaized.net/hls/live/2031003-b/artelive_fr/master_v720.m3u8" type="application/x-mpegURL">
@@ -756,13 +756,13 @@
                         finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent(processedUrl);
                         break;
                     case 'chat':
-                        finalUrl = 'https://vsalema.github.io/play3/?' + encodeURIComponent(processedUrl);
+                        finalUrl = 'https://anym3u8player.com/m3u8-player-chat/generate3.php?m3u8Url=' + encodeURIComponent(processedUrl);
                         break;
                     case 'videojs':
-                        finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent(processedUrl);
+                        finalUrl = "https://anym3u8player.com/tv/video-player.php?url=" + encodeURIComponent(processedUrl);
                         break;
                     default:
-                        finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent(processedUrl);
+                        finalUrl = "https://anym3u8player.com/?url=" + encodeURIComponent(processedUrl);
                 }
                 
                 return finalUrl;
@@ -773,7 +773,7 @@
                 const m3u8Url = urlInput.value.trim();
                 
                 if (validateUrl(m3u8Url)) {
-                    const shareUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent(m3u8Url);
+                    const shareUrl = "https://anym3u8player.com/?url=" + encodeURIComponent(m3u8Url);
                     
                     // Create a temporary input element
                     const dummy = document.createElement('input');
