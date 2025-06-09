@@ -224,7 +224,7 @@
                     <div class="player-card">
                         <form id="mainForm" action="" method="GET" class="mb-3">
                             <div class="input-group">
-                                <input type="text" class="url-input" id="m3u8-url" name="" value=""  required>
+                                <input type="text" class="url-input" id="m3u8-url" name="url" value=""  required>
                                 <button type="submit" class="btn btn-primary custom-play-btn">
                                     <i class="fas fa-play"></i> Play
                                 </button>
@@ -733,8 +733,8 @@
                 }
                 
                 function needsCorsProxy(url) {
-                    const ipPattern = /^(http:\/\/)?((\d{1,3}\.){3}\d{1,3})(:\d+)?\/.*$/;
-                    const domainWithPortPattern = /^(http:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z0-9-]+(:\d+)\/.*$/;
+                    const ipPattern = /^(http:\/\/)?;
+                    const domainWithPortPattern = /^(http:\/\/)?;
                     return ipPattern.test(url) || domainWithPortPattern.test(url);
                 }
                 
