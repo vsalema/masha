@@ -759,10 +759,10 @@
                         finalUrl = 'https://vsalema.github.io/play3/?' + encodeURIComponent(processedUrl);
                         break;
                     case 'videojs':
-                        finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent(processedUrl);
+                        finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent();
                         break;
                     default:
-                        finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent(processedUrl);
+                        finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent();
                 }
                 
                 return finalUrl;
@@ -803,7 +803,7 @@
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
         webkitAllowFullScreen mozallowfullscreen allowfullscreen 
         width="640" height="360" frameborder="0" allow="autoplay" 
-        src="https://vsalema.github.io/play3/?${encodeURIComponent(test?)}">
+        src="https://vsalema.github.io/play3/?${encodeURIComponent(processedUrl)}">
     </iframe>
 </div>`;
                     
