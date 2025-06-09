@@ -224,7 +224,8 @@
                     <div class="player-card">
                         <form id="mainForm" action="" method="GET" class="mb-3">
                             <div class="input-group">
-                                <input type="text" class="url-input" id="m3u8-url" name="url" value="" required>
+                                <input type="text" class="url-input" id="m3u8-url" name="url" value="" 
+					pattern="https://.*" required>
                                 <button type="submit" class="btn btn-primary custom-play-btn">
                                     <i class="fas fa-play"></i> Play
                                 </button>
@@ -606,7 +607,7 @@
                     
                     if (validateUrl(m3u8Url)) {
                         const videoJsUrl = buildPlayerUrl(m3u8Url, 'videojs');
-                        window.open(videoJsUrl, '_self');
+                        window.open(videoJsUrl, '_blank');
                     }
                 });
             }
