@@ -606,7 +606,7 @@
                     
                     if (validateUrl(m3u8Url)) {
                         const videoJsUrl = buildPlayerUrl(m3u8Url, 'videojs');
-                        window.open(videoJsUrl, '_blank');
+                        window.open(videoJsUrl, '_self');
                     }
                 });
             }
@@ -759,10 +759,10 @@
                         finalUrl = 'https://vsalema.github.io/play3/?' + encodeURIComponent(processedUrl);
                         break;
                     case 'videojs':
-                        finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent();
+                        finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent(processedUr);
                         break;
                     default:
-                        finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent();
+                        finalUrl = "https://vsalema.github.io/play3/?" + encodeURIComponent(processedUr);
                 }
                 
                 return finalUrl;
@@ -803,7 +803,7 @@
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
         webkitAllowFullScreen mozallowfullscreen allowfullscreen 
         width="640" height="360" frameborder="0" allow="autoplay" 
-        src="https://vsalema.github.io/play3/?${encodeURIComponent(processedUrl)}">
+        src="https://vsalema.github.io/play3/?${encodeURIComponent(m3u8Url)}">
     </iframe>
 </div>`;
                     
